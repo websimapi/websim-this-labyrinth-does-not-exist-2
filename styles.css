@@ -1,0 +1,352 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #3a0ca3;
+    --secondary-color: #4361ee;
+    --accent-color: #7209b7;
+    --text-color: #f8f9fa;
+    --background-color: #1a1a2e;
+    --card-background: #16213e;
+    --control-background: rgba(0, 0, 0, 0.7);
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    overflow-x: hidden;
+}
+
+#app {
+    width: 100%;
+    min-height: 100vh;
+}
+
+.app-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background-color: var(--card-background);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+h1 {
+    color: var(--text-color);
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.description {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.tabs {
+    display: flex;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid var(--secondary-color);
+}
+
+.tab {
+    padding: 0.8rem 1.5rem;
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    opacity: 0.7;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+
+.tab.active {
+    background-color: var(--secondary-color);
+    opacity: 1;
+}
+
+.tab:hover {
+    opacity: 1;
+}
+
+.gallery-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.labyrinth-card {
+    background-color: var(--card-background);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+}
+
+.labyrinth-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+.labyrinth-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 2px solid var(--accent-color);
+}
+
+.labyrinth-info {
+    padding: 1rem;
+}
+
+.labyrinth-title {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+
+.labyrinth-desc {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    margin-bottom: 0.5rem;
+    height: 60px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+.creator-info {
+    display: flex;
+    align-items: center;
+    margin-top: 0.5rem;
+}
+
+.creator-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+    object-fit: cover;
+}
+
+.creator-name {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.generator-container {
+    background-color: var(--card-background);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+input, textarea, select {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--text-color);
+    font-size: 1rem;
+}
+
+textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+button {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: var(--primary-color);
+}
+
+.loading {
+    text-align: center;
+    padding: 2rem;
+}
+
+.error {
+    color: #ff4d6d;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.generated-preview {
+    margin-top: 1.5rem;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+    border-radius: 4px;
+}
+
+.labyrinth-game {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    z-index: 100;
+    overflow: hidden;
+}
+
+.game-canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.game-info {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: var(--control-background);
+    padding: 0.8rem;
+    border-radius: 8px;
+    max-width: 300px;
+}
+
+.mobile-controls {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    z-index: 110;
+}
+
+.control-row {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.control-button {
+    width: 60px;
+    height: 60px;
+    background-color: var(--control-background);
+    border: 2px solid var(--accent-color);
+    border-radius: 50%;
+    margin: 0 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    color: white;
+    user-select: none;
+}
+
+.close-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: var(--control-background);
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 110;
+}
+
+.map-button {
+    position: absolute;
+    top: 20px;
+    right: 80px;
+    background-color: var(--control-background);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    z-index: 110;
+}
+
+.map-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--control-background);
+    width: 80%;
+    height: 80%;
+    border-radius: 8px;
+    z-index: 115;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.map-canvas {
+    flex: 1;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 4px;
+}
+
+.map-title {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+    .gallery-container {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    }
+    
+    .header h1 {
+        font-size: 2rem;
+    }
+    
+    .mobile-controls {
+        opacity: 0.7;
+    }
+    
+    .control-button {
+        width: 50px;
+        height: 50px;
+    }
+}
+
